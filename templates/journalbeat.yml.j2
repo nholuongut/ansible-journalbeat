@@ -1,0 +1,1 @@
+{{ journalbeat_default_conf | combine(journalbeat_conf, recursive=True) | to_nice_yaml }}

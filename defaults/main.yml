@@ -1,0 +1,23 @@
+---
+journalbeat_repo: "https://copr-be.cloud.fedoraproject.org/results/bcdonadio/journalbeat/epel-7-$basearch/"
+journalbeat_repokey: "https://copr-be.cloud.fedoraproject.org/results/bcdonadio/journalbeat/pubkey.gpg"
+
+# Use the following variables to simplified setup
+journalbeat_elasticsearch: false
+journalbeat_logstash: false
+journalbeat_kafka: false
+journalbeat_redis: false
+journalbeat_defaultType: "journal"
+journalbeat_tags: []
+journalbeat_product: "undefined"
+journalbeat_env: "undefined"
+journalbeat_net: "undefined"
+journalbeat_dc: "undefined"
+journalbeat_hosts: []
+journalbeat_compressionLevel: 3
+journalbeat_worker: 1
+journalbeat_loadBalance: true
+journalbeat_index: "journalbeat"
+
+# Use the following dict to override defaults in the vars/main.yml file
+journalbeat_conf: {}

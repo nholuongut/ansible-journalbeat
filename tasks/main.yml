@@ -1,0 +1,30 @@
+---
+- name: install journalbeat repo
+  yum_repository:
+    name: journalbeat
+    description: "Journalbeat repository"
+    baseurl: "{{ journalbeat_repo }}"
+    gpgkey: "{{ journalbeat_repokey }}"
+
+- name: install journalbeat
+  package:
+    name: journalbeat
+    state: present
+
+- name: setup journalbeat config
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - src: "journalbeat.yml.j2"
+      dest: "/etc/journalbeat.yml"
+  notify:
+    - restart journalbeat
+
+- meta: flush_handlers
+
+- name: ensure service started
+  service:
+    name: journalbeat
+    state: started
+    enabled: true
